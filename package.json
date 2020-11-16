@@ -17,6 +17,8 @@
     "@types/react-router-dom": "^5.1.6",
     "@types/unsplash-js": "^6.3.1",
     "antd": "^4.8.2",
+    "download-image": "^1.0.1",
+    "millify": "^3.3.0",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
@@ -53,5 +55,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
