@@ -1,6 +1,7 @@
 import { Col, Row } from 'antd';
 import React from 'react';
 import { Head } from './head';
+import { NavBar } from './navBar';
 
 interface props {
     children: any;
@@ -12,8 +13,9 @@ export function Layout({ children, TitleHead }: props){
         <>
             <Head title={TitleHead} />
             <Row justify='center'>
-                <Col xs={23} md={10} style={{ backgroundColor: '#fff' }}>
+                <Col xs={24} md={10} style={{ backgroundColor: '#fff' }}>
                     {children}
+                    <NavBar />
                 </Col>
             </Row>
         </>
