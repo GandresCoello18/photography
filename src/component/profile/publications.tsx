@@ -44,6 +44,7 @@ export function PublicationProfile({
                   height="auto"
                   src={photo.urls.small}
                   effect="blur"
+                  loading="lazy"
                   width="100%"
                 />
               </CardContent>

@@ -61,7 +61,10 @@ export function HomePage() {
                   created_at={photo.created_at}
                   color={photo.color}
                   username={photo.user.username}
-                  Photo={photo}
+                  liked_by_user={photo.liked_by_user}
+                  likes={photo.likes}
+                  description={photo.description}
+                  title={photo.title}
                   key={photo.id}
                 >
                   <LazyLoadImage

@@ -18,8 +18,8 @@ export function CardsPlaceholder({ isLoading, count }: Props) {
   return (
     <>
       {Skeletons.map((item) => (
-        <div style={{ padding: 10 }}>
-          <Skeleton loading={isLoading} active avatar key={item} />
+        <div style={{ padding: 10 }} key={item}>
+          <Skeleton loading={isLoading} active avatar />
         </div>
       ))}
     </>

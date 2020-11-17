@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col, Row, Tag } from "antd";
 import React from "react";
 import millify from "millify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -22,6 +22,10 @@ export function InfoProfile({ user }: Props) {
       fontSize: 18.5,
       fontWeight: 400,
       marginTop: 5,
+      border: 2,
+      overflow: "hidden",
+      borderStyle: "solid",
+      borderColor: "#94acc4",
     },
     item_profile: {
       fontSize: 17,
@@ -62,7 +66,7 @@ export function InfoProfile({ user }: Props) {
             {user.instagram_username && (
               <Col xs={22} md={12} style={styles.space}>
                 <a
-                  href={user.instagram_username}
+                  href={"https://www.instagram.com/" + user.instagram_username}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -74,7 +78,7 @@ export function InfoProfile({ user }: Props) {
             {user.twitter_username && (
               <Col xs={22} md={12} style={styles.space}>
                 <a
-                  href={user.twitter_username}
+                  href={"https://twitter.com/" + user.twitter_username}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -117,9 +121,15 @@ export function InfoProfile({ user }: Props) {
             </Col>
             <Col span={20}>
               <p style={styles.biografia}>
-                <SolutionOutlined style={styles.icon} />
-                &nbsp;
-                {user.bio}
+                {user.bio ? (
+                  <>
+                    <SolutionOutlined style={styles.icon} />
+                    &nbsp;
+                    {user.bio}
+                  </>
+                ) : (
+                  <Tag color="pink">No biografia</Tag>
+                )}
                 <br />
                 <a href={user.portfolio_url} target="_blank" rel="noreferrer">
                   {user.portfolio_url}

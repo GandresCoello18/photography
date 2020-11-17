@@ -6,6 +6,7 @@ import { Layout } from "../component/layout";
 import { CardsPlaceholder } from "../component/loader/cards-placeholder";
 import { InfoProfile } from "../component/profile/info";
 import { PublicationProfile } from "../component/profile/publications";
+import { TaggedProfile } from "../component/profile/tagged";
 import { SvgLogo } from "../component/svg/logo";
 
 interface Params {
@@ -26,15 +27,16 @@ export function Profile() {
       .then(json)
       .then((data) => {
         setUser(data);
+        console.log(data);
         setIsLoading(false);
       });
 
-    unsplash.users
+    /*unsplash.users
       .statistics(params.username, "days", 30)
       .then(json)
       .then((data) => {
         console.log(data);
-      });
+      });*/
   }, [params]);
 
   return (
@@ -74,7 +76,10 @@ export function Profile() {
                 />
               </TabPane>
               <TabPane tab="Tagged" key="Tagged">
-                Tagged
+                <TaggedProfile aggregated={user.tags.aggregated} />
+              </TabPane>
+              <TabPane tab="statistics" key="statistics">
+                statistics
               </TabPane>
             </Tabs>
           </>
