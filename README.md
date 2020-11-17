@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Artistic
+App SPA en React para el consumo de fotografias de origin "Unsplash".
+Listo para ser conectado con la * [Api](https://unsplash.com/documentation)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Comenzando 🚀
 
-## Available Scripts
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
-In the project directory, you can run:
+Mira **Deployment** para conocer como desplegar el proyecto.
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Pre-requisitos 📋
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+_Que cosas necesitas para instalar el software y como instalarlas_
 
-### `yarn test`
+_Tener instalado Node Js en tu ordenador, puedes obtener desde el sitio oficial para diferentes SOS._
+* [Node js](https://nodejs.org/es/) - Entorno de ejecucion javascript
+* [Git](https://git-scm.com/) - Control de versiones.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Instalación 🔧
 
-### `yarn build`
+Abrir una terminal o linea de comandos apuntando a la raiz de la carpeta y ejecuta.
+```
+yarn install
+```
+_Despues que termine la instacion proceda a ejecutar el siguiente comando para correr la api en ambiente de desarrollo o local._
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+_Pàra corrar en production ejecutar
+```
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Despliegue 📦
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+_Configurado con integracion continuas, cada vez que se haga un nuevo commit al repo en la rama master se vuelve a compilar el proyecto.
 
-### `yarn eject`
+## Construido con 🛠️
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+_Para el desarrollo de esta APP se utilizo las siguientes herramientas._
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [React](https://es.reactjs.org/) - React js, es una libreria de interfaz de usuario, para crear componentes reutilizables.
+* [Redux](https://es.redux.js.org/) - Libreria para manejar el estado de la aplicacion de forma global y accedes desde cualquien componente.
+* [TypeScript](https://www.typescriptlang.org/) - Le agrega un tipado a las propiedades de javascript para mejor rendimiento de la app.
+* [unsplash-js](https://github.com/unsplash/unsplash-js) - Para peticiones ( fetch ) ha otras direcciones de internet, consume * [Api](https://unsplash.com/documentation#list-photos)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Autores ✒️
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* **Andrés Coello** - *Developer full stack* - [Andres Coello](https://www.instagram.com/coellogoyes/)
 
-## Learn More
+## Licencia 📄
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Este proyecto está bajo la Licencia (MIT)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Expresiones de Gratitud 🎁
+
+* Pasate por mi perfil para ver algun otro proyecto 📢
+* Desarrollemos alguna app juntos, puedes escribirme en mis redes. 
+* Muchas gracias por pasarte por este proyecto 🤓.
+
+
+---
+⌨️ con ❤️ por [Andres Coello](https://www.instagram.com/coellogoyes/) 😊
