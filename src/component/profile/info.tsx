@@ -13,9 +13,11 @@ import moment from "moment";
 
 interface Props {
   user: any;
+  setIsStories?: Function | any;
+  stories: Array<any>;
 }
 
-export function InfoProfile({ user }: Props) {
+export function InfoProfile({ user, setIsStories, stories }: Props) {
   const styles: any = {
     biografia: {
       padding: 10,
@@ -51,10 +53,11 @@ export function InfoProfile({ user }: Props) {
             alt={user.username}
             height={70}
             effect="blur"
+            onClick={() => stories.length && setIsStories(true)}
             src={user.profile_image.medium}
             style={{
               cursor: "pointer",
-              border: 2,
+              border: 3,
               borderStyle: "solid",
               borderColor: "#94acc4",
               borderRadius: "50%",

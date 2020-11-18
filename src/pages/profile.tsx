@@ -8,6 +8,7 @@ import { InfoProfile } from "../component/profile/info";
 import { PublicationProfile } from "../component/profile/publications";
 import { StatisticsProfile } from "../component/profile/statistics";
 import { TaggedProfile } from "../component/profile/tagged";
+import { StoriesProfile } from "../component/stories";
 import { SvgLogo } from "../component/svg/logo";
 
 interface Params {
@@ -18,6 +19,8 @@ export function Profile() {
   const params: Params = useParams();
   const { TabPane } = Tabs;
   const [user, setUser] = useState<any>();
+  const [stories, setStories] = useState<Array<any>>([]);
+  const [isStories, setIsStories] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { Search } = Input;
 
@@ -29,6 +32,13 @@ export function Profile() {
       .then((data) => {
         setUser(data);
         setIsLoading(false);
+      });
+
+    unsplash.users
+      .collections(params.username, 1, 15, "updated")
+      .then(json)
+      .then((data) => {
+        setStories(data);
       });
   }, [params]);
 
@@ -44,7 +54,7 @@ export function Profile() {
           <Col xs={22} md={13}>
             <Search
               placeholder="Palabras claves"
-              loading
+              loading={false}
               style={{ borderRadius: 50 }}
             />
           </Col>
@@ -54,7 +64,18 @@ export function Profile() {
           <CardsPlaceholder isLoading={isLoading} count={1} />
         ) : (
           <>
-            <InfoProfile user={user} />
+            <InfoProfile
+              setIsStories={setIsStories}
+              user={user}
+              stories={stories}
+            />
+            <StoriesProfile
+              avatar={user.profile_image.medium}
+              username={user.username}
+              isStories={isStories}
+              setIsStories={setIsStories}
+              stories={stories}
+            />
 
             <Divider />
 

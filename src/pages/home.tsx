@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Layout } from "../component/layout";
 import { SvgLogo } from "../component/svg/logo";
 import { CardsPlaceholder } from "../component/loader/cards-placeholder";
+import { CircleStories } from "../component/stories/circle-storie";
 
 export function HomePage() {
   const [getPhoto, setPhoto] = useState<Array<any>>([]);
@@ -34,13 +35,13 @@ export function HomePage() {
           <Col xs={24} md={12}>
             <SvgLogo />
           </Col>
-          <Col xs={20} md={8}>
-            stories
+          <Col xs={24} md={8}>
+            <CircleStories stories={[]} />
           </Col>
           <Col xs={22} md={13}>
             <Search
               placeholder="Palabras claves"
-              loading
+              loading={false}
               style={{ borderRadius: 50 }}
             />
           </Col>
