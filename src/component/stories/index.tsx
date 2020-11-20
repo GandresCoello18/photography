@@ -1,3 +1,4 @@
+import { LikeOutlined } from "@ant-design/icons";
 import { Col, Modal, Row, Spin, Tag } from "antd";
 import Avatar from "antd/lib/avatar/avatar";
 import React from "react";
@@ -54,12 +55,26 @@ export function StoriesProfile({
                 ) : (
                   <Tag color="pink">No description</Tag>
                 )}
+                <Row justify="space-around">
+                  <Col span={7}>
+                    <LikeOutlined
+                      style={{
+                        cursor: "pointer",
+                        color: item.cover_photo.liked_by_user
+                          ? "#84a4b4"
+                          : "#fff",
+                      }}
+                    />{" "}
+                    <strong>{item.cover_photo.likes}</strong>
+                  </Col>
+                </Row>
               </div>
             </div>
           );
         },
       });
     });
+    console.log(stories);
   }
 
   return (

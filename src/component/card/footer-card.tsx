@@ -40,7 +40,7 @@ export function FooterCard({
   return (
     <>
       <Row justify="space-around" style={styles.space}>
-        <Col xs={3} md={1}>
+        <Col xs={3} lg={1}>
           {liked_by_user ? (
             <LikeOutlined
               style={{ color: "red", fontSize: 23, cursor: "pointer" }}
@@ -49,13 +49,13 @@ export function FooterCard({
             <LikeOutlined style={styles.iconCard} />
           )}
         </Col>
-        <Col xs={3} md={1}>
+        <Col xs={3} lg={1}>
           <CommentOutlined style={styles.iconCard} />
         </Col>
-        <Col xs={3} md={1}>
+        <Col xs={3} lg={1}>
           <ShareAltOutlined style={styles.iconCard} />
         </Col>
-        <Col xs={14} md={19}>
+        <Col xs={14} lg={19}>
           <p style={{ textAlign: "right" }}>
             <span onClick={() => downloadImage(null, `./image.jpg`)}>
               <DownloadOutlined style={styles.iconCard} />{" "}

@@ -32,13 +32,13 @@ export function HomePage() {
     <>
       <Layout TitleHead="Home">
         <Row justify="space-around">
-          <Col xs={24} md={12}>
+          <Col xs={24} lg={12}>
             <SvgLogo />
           </Col>
-          <Col xs={24} md={8}>
-            <CircleStories stories={[]} />
+          <Col xs={24} lg={8} style={{ marginBottom: 14 }}>
+            <CircleStories />
           </Col>
-          <Col xs={22} md={13}>
+          <Col xs={22} lg={13}>
             <Search
               placeholder="Palabras claves"
               loading={false}
