@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Alert, Col, Row } from "antd";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -31,24 +31,31 @@ export function PublicationProfile({
             hasMore={true}
             loader={<CardsPlaceholder isLoading={isLoading} count={5} />}
           >
-            {publication.map((photo) => (
-              <CardContent
-                avatar={avatar}
-                username={username}
-                isProfile={isProfile}
-                Photo={photo}
-                key={photo.id}
-              >
-                <LazyLoadImage
-                  alt={photo.alt_description}
-                  height="auto"
-                  src={photo.urls.small}
-                  effect="blur"
-                  loading="lazy"
-                  width="100%"
-                />
-              </CardContent>
-            ))}
+            {publication.length ? (
+              publication.map((photo) => (
+                <CardContent
+                  avatar={avatar}
+                  username={username}
+                  isProfile={isProfile}
+                  Photo={photo}
+                  key={photo.id}
+                >
+                  <LazyLoadImage
+                    alt={photo.alt_description}
+                    height="auto"
+                    src={photo.urls.small}
+                    effect="blur"
+                    loading="lazy"
+                    width="100%"
+                  />
+                </CardContent>
+              ))
+            ) : (
+              <Alert
+                type="info"
+                message={`No hay publicaciones de: ( ${username} )`}
+              />
+            )}
           </InfiniteScroll>
         </Col>
       </Row>

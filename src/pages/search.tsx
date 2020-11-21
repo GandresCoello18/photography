@@ -69,28 +69,31 @@ export function SearchPage() {
             {SearchReducer.loading && (
               <CardsPlaceholder count={8} isLoading={isLoading} />
             )}
-            {isSearch && <CardsPlaceholder count={8} isLoading={isSearch} />}
-            {SearchReducer.results.map((photo: any) => (
-              <CardContent
-                avatar={photo.user.profile_image.small}
-                created_at={photo.created_at}
-                color={photo.color}
-                username={photo.user.username}
-                liked_by_user={photo.liked_by_user}
-                likes={photo.likes}
-                description={photo.description}
-                title={photo.title}
-                key={photo.id}
-              >
-                <LazyLoadImage
-                  alt={photo.alt_description}
-                  height="auto"
-                  src={photo.urls.small}
-                  effect="blur"
-                  width="100%"
-                />
-              </CardContent>
-            ))}
+            {isSearch ? (
+              <CardsPlaceholder count={8} isLoading={isSearch} />
+            ) : (
+              SearchReducer.results.map((photo: any) => (
+                <CardContent
+                  avatar={photo.user.profile_image.small}
+                  created_at={photo.created_at}
+                  color={photo.color}
+                  username={photo.user.username}
+                  liked_by_user={photo.liked_by_user}
+                  likes={photo.likes}
+                  description={photo.description}
+                  title={photo.title}
+                  key={photo.id}
+                >
+                  <LazyLoadImage
+                    alt={photo.alt_description}
+                    height="auto"
+                    src={photo.urls.small}
+                    effect="blur"
+                    width="100%"
+                  />
+                </CardContent>
+              ))
+            )}
           </Col>
           <Col xs={22} md={10}>
             <Pagination

@@ -62,6 +62,7 @@ export function HomePage() {
                   description={photo.description}
                   title={photo.title}
                   key={photo.id}
+                  download={photo.links.download}
                 >
                   <LazyLoadImage
                     alt={photo.alt_description}

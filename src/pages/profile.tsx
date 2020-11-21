@@ -1,4 +1,4 @@
-import { Col, Divider, Input, Row, Tabs } from "antd";
+import { Col, Divider, Row, Tabs } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { unsplash, json } from "../api/unsplash";
@@ -22,7 +22,6 @@ export function Profile() {
   const [stories, setStories] = useState<Array<any>>([]);
   const [isStories, setIsStories] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { Search } = Input;
 
   useEffect(() => {
     setIsLoading(true);
@@ -37,8 +36,13 @@ export function Profile() {
     unsplash.users
       .collections(params.username, 1, 15, "updated")
       .then(json)
-      .then((data) => {
-        setStories(data);
+      .then((data) => setStories(data));
+
+    unsplash.users
+      .likes(params.username, 1, 10, "latest")
+      .then(json)
+      .then(async (data) => {
+        console.log(data);
       });
   }, [params]);
 

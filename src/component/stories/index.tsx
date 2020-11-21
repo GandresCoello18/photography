@@ -74,7 +74,6 @@ export function StoriesProfile({
         },
       });
     });
-    console.log(stories);
   }
 
   return (

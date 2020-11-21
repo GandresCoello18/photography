@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from "react";
 import {
   CommentOutlined,
   DownloadOutlined,
@@ -7,13 +8,14 @@ import {
   ShareAltOutlined,
 } from "@ant-design/icons";
 import { Col, Divider, Row, Tag } from "antd";
-const downloadImage = require("download-image");
+import { json, unsplash } from "../../api/unsplash";
 
 interface Props {
   likes: number;
   description: string;
   liked_by_user: boolean;
   title?: string;
+  download?: string | any;
 }
 
 export function FooterCard({
@@ -21,6 +23,7 @@ export function FooterCard({
   description,
   liked_by_user,
   title,
+  download,
 }: Props) {
   const styles = {
     space: {
@@ -35,6 +38,15 @@ export function FooterCard({
       textDecoration: "none",
       color: "#000",
     },
+  };
+
+  const [url, setUrl] = useState<string>("");
+
+  const downloadImg = async () => {
+    unsplash.photos
+      .downloadPhoto({ links: { download_location: download } })
+      .then(json)
+      .then(async (data) => setUrl(data.url));
   };
 
   return (
@@ -55,15 +67,24 @@ export function FooterCard({
         <Col xs={3} lg={1}>
           <ShareAltOutlined style={styles.iconCard} />
         </Col>
-        <Col xs={14} lg={19}>
-          <p style={{ textAlign: "right" }}>
-            <span onClick={() => downloadImage(null, `./image.jpg`)}>
-              <DownloadOutlined style={styles.iconCard} />{" "}
-            </span>
-            &nbsp; &nbsp;
-            <SaveOutlined style={styles.iconCard} />
-          </p>
-        </Col>
+        {download && (
+          <Col xs={14} lg={19}>
+            <p style={{ textAlign: "right" }}>
+              <a
+                style={{ color: "#000" }}
+                download
+                href={url && url}
+                onClick={downloadImg}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <DownloadOutlined style={styles.iconCard} />{" "}
+              </a>
+              &nbsp; &nbsp;
+              <SaveOutlined style={styles.iconCard} />
+            </p>
+          </Col>
+        )}
         <Divider />
         <Col span={22}>
           {title && <strong>{title}</strong>}
