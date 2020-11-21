@@ -1,4 +1,4 @@
-import { Col, Input, Row } from "antd";
+import { Col, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { unsplash, json } from "../api/unsplash";
@@ -8,14 +8,13 @@ import { Layout } from "../component/layout";
 import { SvgLogo } from "../component/svg/logo";
 import { CardsPlaceholder } from "../component/loader/cards-placeholder";
 import { CircleStories } from "../component/stories/circle-storie";
+import { InputSearch } from "../component/search/input";
 
 export function HomePage() {
   const [getPhoto, setPhoto] = useState<Array<any>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [limit, setLimit] = useState<number>(15);
   const [hasMore] = useState<boolean>(true);
-
-  const { Search } = Input;
 
   useEffect(() => {
     setIsLoading(true);
@@ -39,11 +38,7 @@ export function HomePage() {
             <CircleStories />
           </Col>
           <Col xs={22} lg={13}>
-            <Search
-              placeholder="Palabras claves"
-              loading={false}
-              style={{ borderRadius: 50 }}
-            />
+            <InputSearch />
           </Col>
         </Row>
         <br />

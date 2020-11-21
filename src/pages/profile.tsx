@@ -51,13 +51,6 @@ export function Profile() {
               <SvgLogo />
             </Link>
           </Col>
-          <Col xs={22} md={13}>
-            <Search
-              placeholder="Palabras claves"
-              loading={false}
-              style={{ borderRadius: 50 }}
-            />
-          </Col>
         </Row>
         <Divider />
         {isLoading ? (
