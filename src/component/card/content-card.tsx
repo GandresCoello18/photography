@@ -15,6 +15,8 @@ interface Props {
   liked_by_user?: boolean | any;
   title?: string | any;
   download?: string;
+  instagram_user?: string;
+  twitter_user?: string;
 }
 
 export function CardContent({
@@ -29,6 +31,8 @@ export function CardContent({
   description,
   title,
   download,
+  instagram_user,
+  twitter_user,
 }: Props) {
   const styles = {
     card: {
@@ -60,6 +64,9 @@ export function CardContent({
             description={description}
             title={title}
             download={download}
+            username={username}
+            instagram_user={instagram_user}
+            twitter_user={twitter_user}
           />
         )}
       </div>

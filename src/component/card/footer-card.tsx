@@ -1,14 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import {
-  CommentOutlined,
   DownloadOutlined,
   LikeOutlined,
   SaveOutlined,
-  ShareAltOutlined,
 } from "@ant-design/icons";
 import { Col, Divider, Row, Tag } from "antd";
 import { json, unsplash } from "../../api/unsplash";
+import { ModalFooterCard } from "./modal-footer-card";
 
 interface Props {
   likes: number;
@@ -16,6 +15,9 @@ interface Props {
   liked_by_user: boolean;
   title?: string;
   download?: string | any;
+  username: string;
+  instagram_user?: string;
+  twitter_user?: string;
 }
 
 export function FooterCard({
@@ -24,6 +26,9 @@ export function FooterCard({
   liked_by_user,
   title,
   download,
+  username,
+  instagram_user,
+  twitter_user,
 }: Props) {
   const styles = {
     space: {
@@ -62,10 +67,14 @@ export function FooterCard({
           )}
         </Col>
         <Col xs={3} lg={1}>
-          <CommentOutlined style={styles.iconCard} />
-        </Col>
-        <Col xs={3} lg={1}>
-          <ShareAltOutlined style={styles.iconCard} />
+          {download && (
+            <ModalFooterCard
+              username={username}
+              instagram_user={instagram_user}
+              twitter_user={twitter_user}
+              download={download}
+            />
+          )}
         </Col>
         {download && (
           <Col xs={14} lg={19}>

@@ -17,21 +17,22 @@ export function HomePage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const [limit, setLimit] = useState<number>(15);
-  const [hasMore] = useState<boolean>(true);
   const dispatch: Dispatch = useDispatch();
 
   const ListPhotos = useSelector((state: RootState) => state.ListPhotos);
 
   useEffect(() => {
     if (isScroll) {
-      setIsLoading(true);
-      unsplash.photos
-        .listPhotos(1, limit, "latest")
-        .then(json)
-        .then((data) => {
-          dispatch(SetPhotos([...ListPhotos.photos, ...data]));
-          setIsLoading(false);
-        });
+      if (ListPhotos.photos.length < 50) {
+        setIsLoading(true);
+        unsplash.photos
+          .listPhotos(1, limit, "latest")
+          .then(json)
+          .then((data) => {
+            dispatch(SetPhotos([...ListPhotos.photos, ...data]));
+            setIsLoading(false);
+          });
+      }
     }
   }, [ListPhotos, dispatch, isScroll, limit]);
 
@@ -57,9 +58,9 @@ export function HomePage() {
               dataLength={ListPhotos.photos.length}
               next={() => {
                 setLimit(limit + 5);
-                setIsScroll(true);
+                setIsScroll(limit < 50 ? true : false);
               }}
-              hasMore={hasMore}
+              hasMore={limit < 50 ? true : false}
               loader={
                 <CardsPlaceholder
                   isLoading={isLoading ? isLoading : ListPhotos.loading}
@@ -79,6 +80,8 @@ export function HomePage() {
                   title={photo.title}
                   key={index}
                   download={photo.links.download}
+                  instagram_user={photo.user.instagram_username}
+                  twitter_user={photo.user.twitter_username}
                 >
                   <LazyLoadImage
                     alt={photo.alt_description}
@@ -86,6 +89,7 @@ export function HomePage() {
                     src={photo.urls.small}
                     effect="blur"
                     width="100%"
+                    loading="lazy"
                   />
                 </CardContent>
               ))}
