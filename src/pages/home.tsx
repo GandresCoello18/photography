@@ -6,26 +6,34 @@ import { CardContent } from "../component/card/content-card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Layout } from "../component/layout";
 import { SvgLogo } from "../component/svg/logo";
+import { Dispatch, RootState } from "../redux";
+import { SetPhotos } from "../redux/modulos/listPhoto";
 import { CardsPlaceholder } from "../component/loader/cards-placeholder";
 import { CircleStories } from "../component/stories/circle-storie";
 import { InputSearch } from "../component/search/input";
+import { useDispatch, useSelector } from "react-redux";
 
 export function HomePage() {
-  const [getPhoto, setPhoto] = useState<Array<any>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isScroll, setIsScroll] = useState<boolean>(false);
   const [limit, setLimit] = useState<number>(15);
   const [hasMore] = useState<boolean>(true);
+  const dispatch: Dispatch = useDispatch();
+
+  const ListPhotos = useSelector((state: RootState) => state.ListPhotos);
 
   useEffect(() => {
-    setIsLoading(true);
-    unsplash.photos
-      .listPhotos(1, limit, "latest")
-      .then(json)
-      .then((data) => {
-        setPhoto(data);
-        setIsLoading(false);
-      });
-  }, [limit]);
+    if (isScroll) {
+      setIsLoading(true);
+      unsplash.photos
+        .listPhotos(1, limit, "latest")
+        .then(json)
+        .then((data) => {
+          dispatch(SetPhotos([...ListPhotos.photos, ...data]));
+          setIsLoading(false);
+        });
+    }
+  }, [ListPhotos, dispatch, isScroll, limit]);
 
   return (
     <>
@@ -46,12 +54,20 @@ export function HomePage() {
           <Col xs={23} md={21}>
             <InfiniteScroll
               style={{ overflow: "hidden" }}
-              dataLength={getPhoto.length}
-              next={() => setLimit(limit + 5)}
+              dataLength={ListPhotos.photos.length}
+              next={() => {
+                setLimit(limit + 5);
+                setIsScroll(true);
+              }}
               hasMore={hasMore}
-              loader={<CardsPlaceholder isLoading={isLoading} count={5} />}
+              loader={
+                <CardsPlaceholder
+                  isLoading={isLoading ? isLoading : ListPhotos.loading}
+                  count={5}
+                />
+              }
             >
-              {getPhoto.map((photo) => (
+              {ListPhotos.photos.map((photo: any, index: number) => (
                 <CardContent
                   avatar={photo.user.profile_image.small}
                   created_at={photo.created_at}
@@ -61,7 +77,7 @@ export function HomePage() {
                   likes={photo.likes}
                   description={photo.description}
                   title={photo.title}
-                  key={photo.id}
+                  key={index}
                   download={photo.links.download}
                 >
                   <LazyLoadImage

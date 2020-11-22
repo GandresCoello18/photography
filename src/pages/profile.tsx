@@ -8,6 +8,7 @@ import { InfoProfile } from "../component/profile/info";
 import { PublicationProfile } from "../component/profile/publications";
 import { StatisticsProfile } from "../component/profile/statistics";
 import { TaggedProfile } from "../component/profile/tagged";
+import { TheyLikes } from "../component/profile/they-like";
 import { StoriesProfile } from "../component/stories";
 import { SvgLogo } from "../component/svg/logo";
 
@@ -37,13 +38,6 @@ export function Profile() {
       .collections(params.username, 1, 15, "updated")
       .then(json)
       .then((data) => setStories(data));
-
-    unsplash.users
-      .likes(params.username, 1, 10, "latest")
-      .then(json)
-      .then(async (data) => {
-        console.log(data);
-      });
   }, [params]);
 
   return (
@@ -58,7 +52,7 @@ export function Profile() {
         </Row>
         <Divider />
         {isLoading ? (
-          <CardsPlaceholder isLoading={isLoading} count={1} />
+          <CardsPlaceholder isLoading={isLoading} count={3} />
         ) : (
           <>
             <InfoProfile
@@ -78,6 +72,9 @@ export function Profile() {
 
             <Tabs defaultActiveKey="Publications" centered>
               <TabPane tab="Publications" key="Publications">
+                <p style={{ textAlign: "center", padding: 10 }}>
+                  Ultimas <strong>3 Publicaciones.</strong>
+                </p>
                 <PublicationProfile
                   isProfile={true}
                   isLoading={isLoading}
@@ -88,6 +85,11 @@ export function Profile() {
               </TabPane>
               <TabPane tab="Tagged" key="Tagged">
                 <TaggedProfile aggregated={user.tags.aggregated} />
+              </TabPane>
+              <TabPane tab="They like" key="They-like">
+                <TheyLikes username={params.username} />
+                <br />
+                <br />
               </TabPane>
               <TabPane tab="statistics" key="statistics">
                 <StatisticsProfile username={params.username} />

@@ -51,10 +51,10 @@ export function CircleStories() {
   return (
     <>
       <div style={styles.container}>
-        {storieAll.map((item) => (
+        {storieAll.map((item, index) => (
           <div
             style={{ padding: 10 }}
-            key={item}
+            key={index}
             onClick={() => ChangeStories(item.id)}
           >
             <Avatar
