@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
-import {
-  DownloadOutlined,
-  LikeOutlined,
-  SaveOutlined,
-} from "@ant-design/icons";
-import { Col, Divider, Row, Tag } from "antd";
+import { DownloadOutlined, LikeOutlined } from "@ant-design/icons";
+import { Col, Divider, message, Row, Tag } from "antd";
 import { json, unsplash } from "../../api/unsplash";
 import { ModalFooterCard } from "./modal-footer-card";
+import { RootState } from "../../redux";
+import { useSelector } from "react-redux";
 
 interface Props {
+  setLikeId?: Function | any;
+  id: string;
   likes: number;
   description: string;
   liked_by_user: boolean;
@@ -21,9 +21,10 @@ interface Props {
 }
 
 export function FooterCard({
+  setLikeId,
+  id,
   likes,
   description,
-  liked_by_user,
   title,
   download,
   username,
@@ -39,6 +40,11 @@ export function FooterCard({
       fontSize: 23,
       cursor: "pointer",
     },
+    likeIcon: {
+      color: "#479ae3",
+      fontSize: 23,
+      cursor: "pointer",
+    },
     enlace: {
       textDecoration: "none",
       color: "#000",
@@ -47,6 +53,10 @@ export function FooterCard({
 
   const [url, setUrl] = useState<string>("");
 
+  const LikesPhotos = useSelector(
+    (state: RootState) => state.LikesReducer.LikesPhoto
+  );
+
   const downloadImg = async () => {
     unsplash.photos
       .downloadPhoto({ links: { download_location: download } })
@@ -54,18 +64,28 @@ export function FooterCard({
       .then(async (data) => setUrl(data.url));
   };
 
+  const isLike = (id: string) => {
+    return LikesPhotos.find((item: { id: string }) => item.id === id);
+  };
+
   return (
     <>
       <Row justify="space-around" style={styles.space}>
-        <Col xs={3} lg={1}>
-          {liked_by_user ? (
+        {id && (
+          <Col
+            xs={3}
+            lg={1}
+            onClick={() =>
+              isLike(id)
+                ? message.info("Ya sabemos que te gusta :D")
+                : setLikeId(id)
+            }
+          >
             <LikeOutlined
-              style={{ color: "red", fontSize: 23, cursor: "pointer" }}
+              style={isLike(id) ? styles.likeIcon : styles.iconCard}
             />
-          ) : (
-            <LikeOutlined style={styles.iconCard} />
-          )}
-        </Col>
+          </Col>
+        )}
         <Col xs={3} lg={1}>
           {download && (
             <ModalFooterCard
@@ -89,8 +109,6 @@ export function FooterCard({
               >
                 <DownloadOutlined style={styles.iconCard} />{" "}
               </a>
-              &nbsp; &nbsp;
-              <SaveOutlined style={styles.iconCard} />
             </p>
           </Col>
         )}

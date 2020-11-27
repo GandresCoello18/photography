@@ -2,9 +2,11 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import SearchReducer from "./modulos/search";
 import ListPhotos, { SetPhotos } from "./modulos/listPhoto";
+import LikesReducer from "./modulos/likes";
 import { json, unsplash } from "../api/unsplash";
 
 const rootReducer = combineReducers({
+  LikesReducer,
   SearchReducer,
   ListPhotos,
 });

@@ -34,6 +34,7 @@ export function PublicationProfile({
             {publication.length ? (
               publication.map((photo) => (
                 <CardContent
+                  id={photo.id}
                   avatar={avatar}
                   username={username}
                   isProfile={isProfile}

@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Layout } from "../component/layout";
 import { SvgLogo } from "../component/svg/logo";
 import { Dispatch, RootState } from "../redux";
+import { SetLikes } from "../redux/modulos/likes";
 import { SetPhotos } from "../redux/modulos/listPhoto";
 import { CardsPlaceholder } from "../component/loader/cards-placeholder";
 import { CircleStories } from "../component/stories/circle-storie";
@@ -15,12 +16,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { SelectedPhoto } from "../component/selected/tag-photo";
 
 export function HomePage() {
+  const [likeId, setLikeId] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const [limit, setLimit] = useState<number>(15);
   const dispatch: Dispatch = useDispatch();
 
   const ListPhotos = useSelector((state: RootState) => state.ListPhotos);
+  const LikesPhotos = useSelector(
+    (state: RootState) => state.LikesReducer.LikesPhoto
+  );
 
   useEffect(() => {
     if (isScroll) {
@@ -35,7 +40,16 @@ export function HomePage() {
           });
       }
     }
-  }, [ListPhotos, dispatch, isScroll, limit]);
+
+    if (likeId) {
+      const photo = ListPhotos.photos.find(
+        (item: { id: string }) => item.id === likeId
+      );
+      console.log(photo);
+      dispatch(SetLikes([...LikesPhotos, ...[photo]]));
+      setLikeId("");
+    }
+  }, [LikesPhotos, ListPhotos, dispatch, isScroll, likeId, limit]);
 
   return (
     <>
@@ -53,17 +67,17 @@ export function HomePage() {
         </Row>
         <br />
         <Row justify="space-around">
-          <Col xs={5} lg={2}>
+          <Col xs={5} lg={1}>
             <SelectedPhoto title="Of the day" color="success" soruce="daily" />
           </Col>
-          <Col xs={5} lg={2}>
+          <Col xs={5} lg={1}>
             <SelectedPhoto
               title="Of the week"
               color="magenta"
               soruce="weekly"
             />
           </Col>
-          <Col xs={5} lg={2}>
+          <Col xs={5} lg={1}>
             <SelectedPhoto title="Random" color="orange" soruce="random" />
           </Col>
         </Row>
@@ -87,6 +101,8 @@ export function HomePage() {
             >
               {ListPhotos.photos.map((photo: any, index: number) => (
                 <CardContent
+                  setLikeId={setLikeId}
+                  id={photo.id}
                   avatar={photo.user.profile_image.small}
                   created_at={photo.created_at}
                   color={photo.color}

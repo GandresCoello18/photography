@@ -74,6 +74,7 @@ export default function SearchPage() {
             ) : (
               SearchReducer.results.map((photo: any) => (
                 <CardContent
+                  id={photo.id}
                   avatar={photo.user.profile_image.small}
                   created_at={photo.created_at}
                   color={photo.color}

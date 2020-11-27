@@ -4,7 +4,7 @@ import {
   TwitterOutlined,
 } from "@ant-design/icons";
 import { Col, Divider, Modal, Row } from "antd";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   WhatsappShareButton,
   WhatsappIcon,
@@ -53,17 +53,18 @@ export function ModalFooterCard({
   const [modal, setModal] = useState<boolean>(false);
   const [ShareUrl, setShareUrl] = useState<string>("");
 
-  useEffect(() => {
+  const UrlPhoto = (download: string) => {
     unsplash.photos
       .downloadPhoto({ links: { download_location: download } })
       .then(json)
       .then(async (data) => setShareUrl(data.url));
-  }, [download]);
+    setModal(true);
+  };
 
   return (
     <>
       <ShareAltOutlined
-        onClick={() => setModal(true)}
+        onClick={() => UrlPhoto(download)}
         style={styles.iconCard}
       />
       <Modal

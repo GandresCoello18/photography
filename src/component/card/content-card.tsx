@@ -3,6 +3,8 @@ import React from "react";
 import { HeadCard } from "../card/head-card";
 import { FooterCard } from "../card/footer-card";
 interface Props {
+  setLikeId?: Function | any;
+  id: string;
   Photo?: any;
   children: any;
   avatar: string;
@@ -20,6 +22,8 @@ interface Props {
 }
 
 export function CardContent({
+  setLikeId,
+  id,
   children,
   avatar,
   created_at,
@@ -59,6 +63,8 @@ export function CardContent({
         </Row>
         {!isProfile && (
           <FooterCard
+            setLikeId={setLikeId}
+            id={id}
             likes={likes}
             liked_by_user={liked_by_user}
             description={description}
