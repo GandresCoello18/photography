@@ -2,6 +2,7 @@ import { Alert, Col, Row } from "antd";
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { CardContent } from "../component/card/content-card";
 import { Layout } from "../component/layout";
 import { InputSearch } from "../component/search/input";
@@ -18,7 +19,9 @@ export default function LikesPage() {
       <Layout TitleHead="Likes">
         <Row justify="space-around">
           <Col xs={24} lg={12}>
-            <SvgLogo />
+            <Link to="/">
+              <SvgLogo />
+            </Link>
           </Col>
           <Col xs={22} lg={13}>
             <InputSearch />

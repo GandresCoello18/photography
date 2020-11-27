@@ -21,9 +21,9 @@ export function TaggedProfile({ aggregated }: Props) {
     if (likeId) {
       const photo = aggregated
         .filter((item) => item.source)
-        .find((item: { id: string }) => item.id === likeId);
+        .find((item) => item.source.cover_photo.id === likeId);
       console.log(photo);
-      dispatch(SetLikes([...LikesPhotos, ...[photo]]));
+      dispatch(SetLikes([...LikesPhotos, ...[photo.source.cover_photo]]));
       setLikeId("");
     }
   }, [likeId, aggregated, dispatch, LikesPhotos]);
