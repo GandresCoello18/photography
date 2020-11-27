@@ -9,6 +9,7 @@ import { InfoProfile } from "../component/profile/info";
 import { CardsPlaceholder } from "../component/loader/cards-placeholder";
 import { PublicationProfile } from "../component/profile/publications";
 import { StatisticsProfile } from "../component/profile/statistics";
+import { Link } from "react-router-dom";
 
 export function MeProfile() {
   const [meProfile, setMeProfile] = useState<any>();
@@ -51,7 +52,9 @@ export function MeProfile() {
       <Layout TitleHead="Mi Perfil">
         <Row justify="space-around">
           <Col xs={24} lg={12}>
-            <SvgLogo />
+            <Link to="/">
+              <SvgLogo />
+            </Link>
           </Col>
           <Col xs={22} lg={13}>
             <InputSearch />
@@ -97,9 +100,6 @@ export function MeProfile() {
                     Inicia session para
                     <ul>
                       <li>Ver este perfil (por defecto perfil del autor).</li>
-                      <li>Guardar fotos.</li>
-                      <li>Poder dar me gusta</li>
-                      <li>Actualizar perfil</li>
                       <li>Ver estadisticas</li>
                     </ul>
                   </>

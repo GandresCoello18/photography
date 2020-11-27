@@ -12,6 +12,7 @@ import { CardsPlaceholder } from "../component/loader/cards-placeholder";
 import { CircleStories } from "../component/stories/circle-storie";
 import { InputSearch } from "../component/search/input";
 import { useDispatch, useSelector } from "react-redux";
+import { SelectedPhoto } from "../component/selected/tag-photo";
 
 export function HomePage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -48,6 +49,22 @@ export function HomePage() {
           </Col>
           <Col xs={22} lg={13}>
             <InputSearch />
+          </Col>
+        </Row>
+        <br />
+        <Row justify="space-around">
+          <Col xs={5}>
+            <SelectedPhoto title="Of the day" color="success" soruce="daily" />
+          </Col>
+          <Col xs={5}>
+            <SelectedPhoto
+              title="Of the week"
+              color="magenta"
+              soruce="weekly"
+            />
+          </Col>
+          <Col xs={5}>
+            <SelectedPhoto title="Random" color="orange" soruce="random" />
           </Col>
         </Row>
         <br />
