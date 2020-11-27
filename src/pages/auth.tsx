@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { Alert, Spin } from "antd";
 import { useHistory } from "react-router-dom";
 
-export function AuthPage() {
+export default function AuthPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const history = useHistory();
 

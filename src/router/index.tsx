@@ -2,10 +2,11 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { HomePage } from "../pages/home";
 import { NotFound } from "../pages/not-found";
-import { Profile } from "../pages/profile";
-import { SearchPage } from "../pages/search";
-import { AuthPage } from "../pages/auth";
-import { MeProfile } from "../pages/me-profile";
+
+const Profile = React.lazy(() => import("../pages/profile"));
+const MeProfile = React.lazy(() => import("../pages/me-profile"));
+const SearchPage = React.lazy(() => import("../pages/search"));
+const AuthPage = React.lazy(() => import("../pages/auth"));
 
 export default function Routes() {
   return (

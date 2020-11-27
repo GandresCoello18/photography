@@ -11,7 +11,7 @@ import { PublicationProfile } from "../component/profile/publications";
 import { StatisticsProfile } from "../component/profile/statistics";
 import { Link } from "react-router-dom";
 
-export function MeProfile() {
+export default function MeProfile() {
   const [meProfile, setMeProfile] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { TabPane } = Tabs;

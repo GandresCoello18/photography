@@ -13,7 +13,7 @@ import { InputSearch } from "../component/search/input";
 import { json, unsplash } from "../api/unsplash";
 import { SetSearch } from "../redux/modulos/search";
 
-export function SearchPage() {
+export default function SearchPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSearch, setIsSearch] = useState<boolean>(false);
   const SearchReducer = useSelector((state: RootState) => state.SearchReducer);

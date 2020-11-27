@@ -16,7 +16,7 @@ interface Params {
   username: string;
 }
 
-export function Profile() {
+export default function Profile() {
   const params: Params = useParams();
   const { TabPane } = Tabs;
   const [user, setUser] = useState<any>();
