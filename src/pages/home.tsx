@@ -53,17 +53,17 @@ export function HomePage() {
         </Row>
         <br />
         <Row justify="space-around">
-          <Col xs={5}>
+          <Col xs={5} lg={2}>
             <SelectedPhoto title="Of the day" color="success" soruce="daily" />
           </Col>
-          <Col xs={5}>
+          <Col xs={5} lg={2}>
             <SelectedPhoto
               title="Of the week"
               color="magenta"
               soruce="weekly"
             />
           </Col>
-          <Col xs={5}>
+          <Col xs={5} lg={2}>
             <SelectedPhoto title="Random" color="orange" soruce="random" />
           </Col>
         </Row>
