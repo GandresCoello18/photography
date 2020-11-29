@@ -1,6 +1,53 @@
 # Artistic
 App SPA en React para el consumo de fotografias de origin "Unsplash".
 Listo para ser conectado con la * [Api](https://unsplash.com/documentation)
+<p>
+  Es responive desing pero es recomendable utilizar en una resolucion mobil. 
+ </p>
+
+# Api Unsplash
+50/50 requests remaining this hour.
+<p>
+  <img height="300" src="https://scontent.fuio15-1.fna.fbcdn.net/v/t1.0-9/128579390_1706796899497862_1358016599460853604_o.jpg?_nc_cat=107&ccb=2&_nc_sid=0debeb&_nc_ohc=HgU8N6j7DXEAX89SaCI&_nc_ht=scontent.fuio15-1.fna&oh=2dbf6e243a7f76db1aa9e81378394d8a&oe=5FE7ECE1" />
+</p>
+
+Estadisticas de request, ultimos 30 dias en uso.
+<p>
+  <img height="300" src="https://scontent.fuio15-1.fna.fbcdn.net/v/t1.0-9/128414456_1706796962831189_5609161614081442397_n.jpg?_nc_cat=107&ccb=2&_nc_sid=0debeb&_nc_ohc=TA9YM3y17s8AX9Sx32x&_nc_ht=scontent.fuio15-1.fna&oh=a5566ec157aaf5c0aba2482d2c4f30ff&oe=5FE84C4D" />
+</p>
+
+## AUTH
+Url autorizada por **Unsplah** para [inicio de sesion](https://photography-lovat.vercel.app/auth)
+
+### Permisos
+<p>
+  Public access -
+  Access users' public data
+</p>
+<p>
+  Read user access -
+  Access users' private data
+</p>
+<p>
+  Write user access -
+  Edit and create user data
+ </p>
+<p>
+  Read photos access -
+  Access private information for user photos
+ </p>
+ <p>
+  Write photos access -
+  Edit photos for users
+ </p>
+ <p>
+  Write likes access -
+  Like items for the user
+ </p>
+ <p>
+  Read collections access -
+  Retrieve private collections for the user
+ </p>
 
 ## Comenzando 🚀
 
