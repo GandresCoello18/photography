@@ -1,4 +1,4 @@
-import { Avatar } from "antd";
+import { Avatar, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { json, unsplash } from "../../api/unsplash";
 import { StoriesProfile } from "./index";
@@ -24,15 +24,18 @@ export function CircleStories() {
   const [storieAll, setStoriesAll] = useState<Array<any>>([]);
   const [storieSelect, setStoriesSelect] = useState<Array<any>>([]);
   const [isStories, setIsStories] = useState<boolean>(false);
+  const [isLading, setIsLoading] = useState<boolean>(false);
   const [Username, setUsername] = useState<string>("");
   const [avatar, setAvatar] = useState<string>("");
 
   useEffect(() => {
+    setIsLoading(true);
     unsplash.collections
       .listCollections(1, 20)
       .then(json)
       .then((data) => {
         setStoriesAll(data);
+        setIsLoading(false);
       });
   }, []);
 
@@ -64,6 +67,7 @@ export function CircleStories() {
             />
           </div>
         ))}
+        {isLading && <Skeleton active avatar round />}
       </div>
       <StoriesProfile
         stories={storieSelect}

@@ -99,7 +99,8 @@ export default function MeProfile() {
                   <>
                     Inicia session para
                     <ul>
-                      <li>Ver este perfil (por defecto perfil del autor).</li>
+                      <li>Ver mi perfil de unsplash.</li>
+                      <li>Ver Publicaciones</li>
                       <li>Ver estadisticas</li>
                     </ul>
                   </>

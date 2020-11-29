@@ -2,8 +2,8 @@ import Cookies from "js-cookie";
 import Unsplash, { toJson } from "unsplash-js";
 
 export const unsplash = new Unsplash({
-  accessKey: "ywvwMaZ7n-kdpiF4aiAgFsJztp9CGPzeeM_YINxKLHU",
-  secret: "eq8akYXxOB6dIOItz6CZkma670XnQXHvccCKU5fAz34",
+  accessKey: "fjcfOwmUmV6qRt375jx2nMyeUaJf0kZWeCA4uhxOQHk",
+  secret: "uqVo4kYXzHUOcoXZgkiK7B6L3nKQgk90uCBj19Gvf-A",
   callbackUrl: "https://photography-lovat.vercel.app/auth",
   bearerToken: Cookies.get("bearerToken"),
 });
