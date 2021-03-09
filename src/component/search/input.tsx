@@ -33,7 +33,7 @@ export function InputSearch() {
   return (
     <>
       <Search
-        placeholder="Busca fotografias con palabras claves..."
+        placeholder="Search for pictures with keywords..."
         loading={isSearch}
         onSearch={buscar_photos}
         style={{ borderRadius: 50 }}

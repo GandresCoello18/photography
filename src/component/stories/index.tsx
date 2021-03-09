@@ -95,6 +95,7 @@ export function StoriesProfile({
           <Row justify="center">
             <Col>
               <Stories
+                width={295}
                 stories={data}
                 defaultInterval={1500}
                 loader={<Spin size="large" />}

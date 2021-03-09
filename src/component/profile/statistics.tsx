@@ -27,6 +27,7 @@ export function StatisticsProfile({ username }: Props) {
       .then(json)
       .then((data) => {
         const label: Array<string> = [];
+        console.log(data);
 
         data.downloads.historical.values.map((item: { date: string }) =>
           label.push(item.date)
@@ -40,12 +41,14 @@ export function StatisticsProfile({ username }: Props) {
           ),
         });
 
-        setLikes({
-          total: data.likes.total,
-          value: data.likes.historical.values.map(
-            (item: { value: number }) => item.value
-          ),
-        });
+        if (data.likes) {
+          setLikes({
+            total: data.likes.total,
+            value: data.likes.historical.values.map(
+              (item: { value: number }) => item.value
+            ),
+          });
+        }
 
         setViews({
           total: data.views.total,
