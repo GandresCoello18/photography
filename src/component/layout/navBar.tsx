@@ -16,7 +16,6 @@ export function NavBar() {
       height: 50,
       justifyContent: "space-around",
       margin: 0,
-      maxWidth: 770,
       position: "fixed",
       width: "100%",
       zIndex: 1000,

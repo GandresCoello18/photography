@@ -14,6 +14,7 @@ import { CircleStories } from "../component/stories/circle-storie";
 import { InputSearch } from "../component/search/input";
 import { useDispatch, useSelector } from "react-redux";
 import { SelectedPhoto } from "../component/selected/tag-photo";
+import { NavBar } from "../component/layout/navBar";
 
 export function HomePage() {
   const [likeId, setLikeId] = useState<string>("");

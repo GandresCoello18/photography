@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React from "react";
 import { DownloadOutlined, LikeOutlined } from "@ant-design/icons";
 import { Col, Divider, message, Row, Tag } from "antd";
 import { json, unsplash } from "../../api/unsplash";
@@ -51,8 +51,6 @@ export function FooterCard({
     },
   };
 
-  const [url, setUrl] = useState<string>("");
-
   const LikesPhotos = useSelector(
     (state: RootState) => state.LikesReducer.LikesPhoto
   );
@@ -61,7 +59,14 @@ export function FooterCard({
     unsplash.photos
       .downloadPhoto({ links: { download_location: download } })
       .then(json)
-      .then(async (data) => setUrl(data.url));
+      .then(async (data) => {
+        const a: any = document.createElement("a");
+
+        a.download = data.url;
+        a.target = "_blank";
+        a.href = data.url;
+        a.click();
+      });
   };
 
   const isLike = (id: string) => {
@@ -99,16 +104,9 @@ export function FooterCard({
         {download && (
           <Col xs={14} lg={19}>
             <p style={{ textAlign: "right" }}>
-              <a
-                style={{ color: "#000" }}
-                download
-                href={url && url}
-                onClick={downloadImg}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <span style={{ color: "#000" }} onClick={downloadImg}>
                 <DownloadOutlined style={styles.iconCard} />{" "}
-              </a>
+              </span>
             </p>
           </Col>
         )}

@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { NavBar } from "../component/layout/navBar";
 import { HomePage } from "../pages/home";
 import { NotFound } from "../pages/not-found";
 
@@ -23,6 +24,7 @@ export default function Routes() {
           <Route exact path="/404" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
+        <NavBar />
       </BrowserRouter>
     </Suspense>
   );

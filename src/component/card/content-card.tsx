@@ -45,7 +45,7 @@ export function CardContent({
       width: "100%",
       borderColor: "#cdcdcd",
       padding: 5,
-      marginBottom: 50,
+      marginBottom: 10,
     },
   };
 

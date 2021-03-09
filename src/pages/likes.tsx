@@ -1,4 +1,4 @@
-import { Alert, Col, Row } from "antd";
+import { Alert, Col, Result, Row } from "antd";
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useSelector } from "react-redux";
@@ -57,10 +57,9 @@ export default function LikesPage() {
               </CardContent>
             ))}
             {likesReducer.length === 0 && (
-              <Alert
-                type="info"
-                message="Por el momento no te gusta ninguna fotografia."
-              />
+              <>
+                <Result title="At the moment you don't like any pictures." />
+              </>
             )}
           </Col>
         </Row>

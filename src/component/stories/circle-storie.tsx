@@ -67,7 +67,12 @@ export function CircleStories() {
             />
           </div>
         ))}
-        {isLading && <Skeleton active avatar round />}
+        {isLading &&
+          [0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <span style={{ marginLeft: 10 }}>
+              <Skeleton.Avatar active key={item} />
+            </span>
+          ))}
       </div>
 
       <StoriesProfile
